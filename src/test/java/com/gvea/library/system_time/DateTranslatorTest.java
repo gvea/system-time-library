@@ -36,6 +36,12 @@ class DateTranslatorTest {
             String actualMonthYearString = instanceUnderTest.toMonthYearString(targetDate);
             assertThat(actualMonthYearString).isEqualTo("July 2019");
         }
+
+        @Test
+        void monthName_should_be_July() {
+            String actualMonthName = instanceUnderTest.toMonthName(targetDate);
+            assertThat(actualMonthName).isEqualTo("July");
+        }
     }
 
     @Nested
@@ -46,15 +52,21 @@ class DateTranslatorTest {
         }
 
         @Test
-        void yearString_should_be_2019() {
+        void yearString_should_be_2022() {
             String actualYearString = instanceUnderTest.toYearString(targetDate);
             assertThat(actualYearString).isEqualTo("2020");
         }
 
         @Test
-        void monthYearString_should_be_July_2019() {
+        void monthYearString_should_be_February_2020() {
             String actualMonthYearString = instanceUnderTest.toMonthYearString(targetDate);
             assertThat(actualMonthYearString).isEqualTo("February 2020");
+        }
+
+        @Test
+        void monthName_should_be_February() {
+            String actualMonthName = instanceUnderTest.toMonthName(targetDate);
+            assertThat(actualMonthName).isEqualTo("February");
         }
     }
 }
