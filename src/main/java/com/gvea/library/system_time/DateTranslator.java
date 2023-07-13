@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class DateTranslator {
     public static final String MONTH_NAME_SPACE_4_DIGIT_YEAR_PATTERN = "MMMM yyyy";
@@ -34,6 +35,10 @@ public class DateTranslator {
         }
         Date time = calendar.getTime();
         return new SimpleDateFormat(MONTH_NAME_SPACE_4_DIGIT_YEAR_PATTERN).format(time);
+    }
+
+    public String toMonthName(Calendar calendar) {
+        return calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
     }
 
     public String formatTime(LocalDateTime localDateTime) {
