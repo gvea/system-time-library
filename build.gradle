@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.gvea'
-version = '1.0'
+version = '1.0.1'
 java {
     sourceCompatibility = '17'
     withJavadocJar()
@@ -13,7 +13,7 @@ java {
 
 publishing {
     publications {
-        myLibrary(MavenPublication) {
+        systemTimeLibraryPublication(MavenPublication) {
             from components.java
         }
     }
