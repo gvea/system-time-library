@@ -31,8 +31,9 @@ jobs:
         with:
           arguments: build
 
-      - name: Upload artifacts build by gradle
-        uses: actions/upload-artifact@v3
-        with:
-          name: Package
-          path: build/libs
+# We don't need to create artifacts, and it pushes us out of "free" builds.
+#      - name: Upload artifacts build by gradle
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: Package
+#          path: build/libs
