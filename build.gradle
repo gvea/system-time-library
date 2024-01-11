@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.gvea'
-version = '1.0.1.1'
+version = '1.0.1.2'
 java {
     sourceCompatibility = '17'
     withJavadocJar()
