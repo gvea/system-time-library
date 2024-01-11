@@ -23,6 +23,15 @@ class SystemTimeProviderTest {
         };
     }
 
+    private CurrentTimeInMillisProvider createCurrentTimeInMillisProviderSetTo(int year, int month, int dayOfMonth, int hour, int min, int seconds) {
+        return new CurrentTimeInMillisProvider() {
+            @Override
+            public long currentTimeMillis() {
+                return new GregorianCalendar(year, month, dayOfMonth, hour, min, seconds).getTimeInMillis();
+            }
+        };
+    }
+
     @Nested
     class For_July_23_2019 {
         @BeforeEach
@@ -90,6 +99,25 @@ class SystemTimeProviderTest {
         @Test
         void getCurrentLocalDateTime() {
             assertThat(instanceUnderTest.getCurrentLocalDateTime()).isEqualTo(LocalDateTime.of(2020, 2, 29, 0, 0));
+        }
+    }
+
+    @Nested
+    class For_March_23_2024_12_00_15 {
+        @BeforeEach
+        void setUp() {
+            currentTImeinMillisProvider = createCurrentTimeInMillisProviderSetTo(2024, Calendar.MARCH, 23, 12, 0, 15);
+            instanceUnderTest = new SystemTimeProvider(currentTImeinMillisProvider);
+        }
+
+        @Test
+        void getCurrentLocalDateTime() {
+            assertThat(instanceUnderTest.getCurrentLocalDateTime()).isEqualTo(LocalDateTime.of(2024, 3, 23, 12, 0, 15));
+        }
+
+        @Test
+        void getCurrentLocalDateTimeTruncatedSeconds() {
+            assertThat(instanceUnderTest.getCurrentLocalDateTimeTruncatedSeconds()).isEqualTo(LocalDateTime.of(2024, 3, 23, 12, 0, 0));
         }
     }
 }
