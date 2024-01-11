@@ -42,4 +42,15 @@ public class SystemTimeProvider {
         Instant current = Instant.ofEpochMilli(currentTimeInMillis());
         return LocalDateTime.ofInstant(current, ZoneId.systemDefault());
     }
+
+    public LocalDateTime getCurrentLocalDateTimeTruncatedSeconds() {
+        LocalDateTime currentDate = getCurrentLocalDateTime();
+        currentDate = LocalDateTime.of(currentDate.getYear(),
+                currentDate.getMonth(),
+                currentDate.getDayOfMonth(),
+                currentDate.getHour(),
+                currentDate.getMinute());
+        return currentDate;
+    }
+
 }
