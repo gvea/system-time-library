@@ -44,13 +44,8 @@ public class SystemTimeProvider {
     }
 
     public LocalDateTime getCurrentLocalDateTimeTruncatedSeconds() {
-        LocalDateTime currentDate = getCurrentLocalDateTime();
-        currentDate = LocalDateTime.of(currentDate.getYear(),
-                currentDate.getMonth(),
-                currentDate.getDayOfMonth(),
-                currentDate.getHour(),
-                currentDate.getMinute());
-        return currentDate;
+        LocalDateTime current = getCurrentLocalDateTime();
+        return current.withSecond(0).withNano(0);
     }
 
 }
